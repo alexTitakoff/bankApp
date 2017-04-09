@@ -92,7 +92,7 @@ public class Menu {
 
     private void createAnAccount() {
         String firstName, lastName, ssn, accountType;
-        double initialDeposit;
+        double initialDeposit = 0;
         boolean valid = false;
         while(!valid) {
             System.out.println("Please enter an account type(checking/savings)");
@@ -125,9 +125,25 @@ public class Menu {
             }
             if(accountType.equalsIgnoreCase("checking")) {
                 if(initialDeposit < 100) {
-
+                    System.out.println("Checking accounts a minimum of $100 to open ");
+                }else {
+                    valid = true;
+                }
+            } else if(accountType.equalsIgnoreCase("savings")) {
+                if(initialDeposit < 50) {
+                    System.out.println("Checking accounts a minimum of $50 to open");
+                }else {
+                    valid = true;
                 }
             }
+        }
+
+        // We can create an account now:
+        Account account;
+        if (accountType.equalsIgnoreCase("checking")) {
+            account = new Checking(initialDeposit);
+        }else {
+            account  = new Savings(initialDeposit);
         }
     }
 
