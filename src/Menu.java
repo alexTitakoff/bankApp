@@ -70,19 +70,75 @@ public class Menu {
                 break;
             case 1:
                 // Create a new account
+                createAnAccount();
                 break;
             case 2:
                 // Make a deposit
+                makeADeposit();
                 break;
             case 3:
                 // Make a widthdrawal
+                makeAWithdrawal();
                 break;
             case 4:
                 // List account ballance
+                listBalances();
                 break;
                 default:
                     System.out.println("Unknow error has occuered");
         }
     }
+
+
+    private void createAnAccount() {
+        String firstName, lastName, ssn, accountType;
+        double initialDeposit;
+        boolean valid = false;
+        while(!valid) {
+            System.out.println("Please enter an account type(checking/savings)");
+            accountType = keyboard.nextLine();
+            if (accountType.equalsIgnoreCase("checking") || accountType.equalsIgnoreCase("savings")) {
+                valid = true;
+            } else {
+                System.out.println("Invalid acccount type selected. Please enter checking or savings");
+            }
+        }
+
+        System.out.println("Please enter your first name: ");
+        firstName = keyboard.nextLine();
+
+
+        System.out.println("Please enter your last name: ");
+        lastName = keyboard.nextLine();
+
+        System.out.println("Please enter your social security number: ");
+        ssn = keyboard.nextLine();
+
+        valid = false;
+        while(!valid) {
+            System.out.println("Please enter your intial deposit: ");
+            try {
+                initialDeposit =  Double.parseDouble(keyboard.nextLine());
+            }
+            catch(NumberFormatException e) {
+                System.out.println("Deposit must be a number.");
+            }
+            if(accountType.equalsIgnoreCase("checking")) {
+                if(initialDeposit < 100) {
+
+                }
+            }
+        }
+    }
+
+    private void makeADeposit() {
+    }
+
+    private void makeAWithdrawal() {
+    }
+
+    private void listBalances() {
+    }
+
 
 }
