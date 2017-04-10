@@ -9,6 +9,7 @@ public class Menu {
     Bank bank = new Bank();
     boolean exit;
 
+
     public static void main(String[] args ) {
         Menu menu = new Menu();
         menu.runMenu();
@@ -91,7 +92,7 @@ public class Menu {
 
 
     private void createAnAccount() {
-        String firstName, lastName, ssn, accountType;
+        String firstName, lastName, ssn, accountType = "";
         double initialDeposit = 0;
         boolean valid = false;
         while(!valid) {
@@ -145,6 +146,9 @@ public class Menu {
         }else {
             account  = new Savings(initialDeposit);
         }
+
+        Customer customer = new Customer(firstName, lastName, ssn, account);
+        bank.addCustomer(customer);
     }
 
     private void makeADeposit() {
