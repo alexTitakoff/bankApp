@@ -17,10 +17,21 @@ public class Customer {
 
     @Override
     public String toString() {
-        return  "\n Cutomer  Information" +
-                "First Name :" + firstName +
+        return  "\n Cutomer  Information \n" +
+                "First Name :" + firstName + "\n"+
+                "Last Name: " + lastName + "\n" +
+                "SSN: " + ssn + "\n" +
+                account;
+    }
+
+    public String basicInfo() {
+        return  "First Name :" + firstName +
                 "Last Name: " + lastName +
                 "SSN: " + ssn +
-                account;
+                "Account Number: " + account.getAccountNumber();
+    }
+
+    Account getAccount() {
+        return account;
     }
 }

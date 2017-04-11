@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -152,12 +153,54 @@ public class Menu {
     }
 
     private void makeADeposit() {
+        int account =  selectAccount();
+
+        if(account >= 0) {
+            System.out.print("How mush would you like to depost?");
+            double amount = 0;
+            try {
+                amount = Double.parseDouble(keyboard.nextLine());
+            }
+            catch (NumberFormatException e) {
+                amount = 0;
+            }
+
+            bank.getCustomer(account).getAccount().deposit(amount);
+        }
+
+
     }
+
 
     private void makeAWithdrawal() {
     }
 
     private void listBalances() {
+    }
+
+
+    private int selectAccount() {
+        ArrayList<Customer> customers = bank.getCustomers();
+
+        if(customers.size() <= 0) {
+            System.out.println("No customers in your bank.");
+            return -1;
+        }
+
+        System.out.println("Select an account:");
+        for(int i = 0; i < customers.size(); i++) {
+            System.out.println((i+1) + ")" + customers.get(i).basicInfo());
+        }
+
+        int account = 0;
+        System.out.println("Please enter your selection: ");
+        try {
+            account = Integer.parseInt(keyboard.nextLine()) - 1;
+        }
+        catch(NumberFormatException e) {
+            account = -1;
+        }
+        return account;
     }
 
 
